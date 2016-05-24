@@ -30,9 +30,9 @@ RUN set -x \
 	&& mv apache-tomee-webprofile-1.7.4/* /usr/local/tomee \
 	&& rm -Rf apache-tomee-webprofile-1.7.4 \
 	&& rm bin/*.bat \
-	&& rm tomee.tar.gz*
-	&& cp /home/vagrant/project/postgresql-9.4.1208.jre6.jar /usr/local/tomee/lib
-	&& cp /home/vagrant/project/ProgettoA.war /usr/local/tomee/webapps/
+	&& rm tomee.tar.gz* \
+	&& cp /home/vagrant/project/postgresql-9.4.1208.jre6.jar /usr/local/tomee/lib \
+	&& cp /home/vagrant/project/ProgettoA.war /usr/local/tomee/webapps/ \
 	&& cp /home/vagrant/project/tomee.xml /usr/local/tomee/conf/
 
 
