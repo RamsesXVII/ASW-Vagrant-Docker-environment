@@ -9,4 +9,4 @@ tomee:
   links:
     - postgres
   volumes:
-    - /vagrant/tomee/src:/usr/local/tomee
+    - /vagrant/tomee/src:/code
