@@ -8,3 +8,5 @@ tomee:
     - "8080:8080"
   links:
     - postgres
+  volumes:
+    - /vagrant/tomee/src:/usr/local/tomee
