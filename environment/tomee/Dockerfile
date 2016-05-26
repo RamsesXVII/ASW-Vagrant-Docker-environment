@@ -5,6 +5,7 @@ RUN mkdir -p /usr/local/tomee
 
 WORKDIR /usr/local/tomee
 
+# curl -fsSL 'https://www.apache.org/dist/tomee/KEYS' | awk -F ' = ' '$1 ~ /^ +Key fingerprint$/ { gsub(" ", "", $2); print $2 }' | sort -u
 ENV GPG_KEYS \
 	BDD0BBEB753192957EFC5F896A62FC8EF17D8FEF \
 	223D3A74B068ECA354DC385CE126833F9CF64915 \
@@ -23,20 +24,18 @@ RUN set -xe \
 	done
 
 RUN set -x \
-	&& curl -fSL https://dist.apache.org/repos/dist/release/tomee/tomee-1.7.4/apache-tomee-1.7.4-webprofile.tar.gz.asc -o tomee.tar.gz.asc \
-	&& curl -fSL http://apache.rediris.es/tomee/tomee-1.7.4/apache-tomee-1.7.4-webprofile.tar.gz -o tomee.tar.gz \
+	&& curl -fSL https://dist.apache.org/repos/dist/release/tomee/tomee-1.7.4/apache-tomee-1.7.4-plus.tar.gz.asc -o tomee.tar.gz.asc \
+	&& curl -fSL http://apache.rediris.es/tomee/tomee-1.7.4/apache-tomee-1.7.4-plus.tar.gz -o tomee.tar.gz \
 	&& gpg --batch --verify tomee.tar.gz.asc tomee.tar.gz \
 	&& tar -zxf tomee.tar.gz \
-	&& mv apache-tomee-webprofile-1.7.4/* /usr/local/tomee \
-	&& rm -Rf apache-tomee-webprofile-1.7.4 \
+	&& mv apache-tomee-plus-1.7.4/* /usr/local/tomee \
+	&& rm -Rf apache-tomee-plus-1.7.4 \
 	&& rm bin/*.bat \
-	&& rm tomee.tar.gz* 
+	&& rm tomee.tar.gz*
 
 COPY /src/postgresql-9.4.1208.jre6.jar /usr/local/tomee/lib/
 COPY /src/ProgettoASW.war /usr/local/tomee/webapps/
 COPY /src/tomee.xml /usr/local/tomee/conf/
 
-
 EXPOSE 8080
-
 CMD ["catalina.sh", "run"]
