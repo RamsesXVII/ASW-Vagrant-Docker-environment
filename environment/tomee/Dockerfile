@@ -5,7 +5,6 @@ RUN mkdir -p /usr/local/tomee
 
 WORKDIR /usr/local/tomee
 
-# curl -fsSL 'https://www.apache.org/dist/tomee/KEYS' | awk -F ' = ' '$1 ~ /^ +Key fingerprint$/ { gsub(" ", "", $2); print $2 }' | sort -u
 ENV GPG_KEYS \
 	BDD0BBEB753192957EFC5F896A62FC8EF17D8FEF \
 	223D3A74B068ECA354DC385CE126833F9CF64915 \
