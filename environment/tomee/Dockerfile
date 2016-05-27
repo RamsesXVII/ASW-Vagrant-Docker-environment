@@ -33,7 +33,7 @@ RUN set -x \
 	&& rm tomee.tar.gz*
 
 COPY /src/postgresql-9.4.1208.jre6.jar /usr/local/tomee/lib/
-COPY /src/ProgettoASW.war /usr/local/tomee/webapps/
+COPY /src/ProgettoREST.war /usr/local/tomee/webapps/
 COPY /src/tomee.xml /usr/local/tomee/conf/
 
 EXPOSE 8080
