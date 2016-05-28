@@ -5,6 +5,7 @@ _Store
 .classpath
 .project
 .build/
+.DS_Store
 .settings/
 boxes/
 /vagrant-spec.config.rb
