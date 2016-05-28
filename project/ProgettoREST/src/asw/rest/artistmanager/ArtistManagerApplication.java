@@ -15,6 +15,7 @@ public class ArtistManagerApplication extends Application {
         final Set<Class<?>> classes = new HashSet<>();
         classes.add(ArtistResource.class);
         classes.add(SongContainer.class);
+        classes.add(SongResource.class);
         classes.add(ArtistContainer.class);
         return classes;
     }

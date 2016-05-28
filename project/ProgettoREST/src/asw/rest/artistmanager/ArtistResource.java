@@ -3,14 +3,6 @@ package asw.rest.artistmanager;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.persistence.*;
-import javax.transaction.*;
-
-import java.net.URI;
-
-import javax.servlet.http.HttpServletResponse;
-
-import java.util.*;
-
 import javax.ejb.*;
 
 @Stateless
@@ -43,8 +35,6 @@ public class ArtistResource {
 		}
 	}
 
-	//TODO
-
 	/* PUT: Aggiorna un prodotto, passato con JSON o XML */
 	@PUT
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_XML})
@@ -52,11 +42,13 @@ public class ArtistResource {
 		/* fa questa ricerca per evitare che venga sollevata un'eccezione al momento del commit */
 		Artist oldArtist = em.find(Artist.class, id);
 		if (oldArtist==null) {
-			throw new WebApplicationException(Response.Status.NOT_FOUND);
+			String message = "The artist with ID "+id+" not exists";
+			throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).entity(message).type("text/plain").build()) ;
 		} else {
 			try {
 				em.merge(p);
-				return Response.ok(p).status(Response.Status.OK).build();
+				String message  = "The "+ p.getName()+ " is updated"; 
+				return Response.ok(p).status(Response.Status.OK).entity(message).type("text/plain") .build();
 			} catch (Exception e) {
 				String errorMessage = "Error while updating Artist " + p.toString() + ": " + e.getMessage();
 				throw new WebApplicationException(
@@ -72,10 +64,12 @@ public class ArtistResource {
 		try {
 			Artist artist = em.find(Artist.class, id);
 			if (artist==null) {
-				throw new WebApplicationException(Response.Status.NOT_FOUND);
+				String message = "The artist with ID "+id+" not exists";
+				throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).entity(message).type("text/plain").build()) ;
 			} else {
 				em.remove(artist);
-				return Response.ok(artist).status(Response.Status.OK).build();
+				String message = "The "+ artist.getName()+" is deleted";
+				return Response.ok(artist).status(Response.Status.OK).entity(message).type("text/plain").build();
 			}
 		} catch (Exception e) {
 			String errorMessage = "Error while deleting Artist with id: " + id + ": " + e.getMessage();
