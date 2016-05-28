@@ -133,7 +133,7 @@ RUN psql --command "CREATE DATABASE music;"
 ```
 Dalla VM è possibile connettersi al database appena creato per mostrare i dati presenti, attraverso la sequenza di comandi:
   ```sh
-$ docker exec -i -t DOCKER_ID /bin/bash
+$ docker exec -i -t "DOCKER_ID" /bin/bash
 $ psql
 $ \connect music
 $ SELECT * FROM artist;
@@ -192,13 +192,14 @@ ID="$(curl -s -H "Accept:application/json" --get "${REST_SERVICE_URL}/artists" |
 echo $(curl --data "name=Money&year=1973&idArtista="${ID}"" "${REST_SERVICE_URL}/songs")
 ```
 
-
-
 ### ToDo
-* 
+* Migliorare la descrizione dell'applicazione in questo file
+* Migliorare messaggi mostrati dall'applicaziona dopo l'esecuzione di richieste HTTP
+* Separare lo script client-test.sh in più script elementari
+
 ### Bug e problemi noti
 
-*  Dovendo configurare diverse VM con diverse configurazioni, sarebbe opportuno far uso di [Hiera][hiera].
+*  Non ci sono bug noti.
 
 
 ### Realizzatori
@@ -215,10 +216,7 @@ echo $(curl --data "name=Money&year=1973&idArtista="${ID}"" "${REST_SERVICE_URL}
    [tomee]: <http://tomee.apache.org/index.html>
    [postgres]: <http://www.postgresql.org>
    [JPA]: <https://it.wikipedia.org/wiki/Java_Persistence_API>
-   [JSF]: <https://it.wikipedia.org/wiki/Java_Server_Faces>
-   [JSP]: <https://it.wikipedia.org/wiki/JavaServer_Pages>
    [Docker]: <https://www.docker.com>
-   [hiera]:<https://docs.puppet.com/hiera/3.1/>
    [qui]:<https://github.com/Vzzarr/ASW_VagrantProvision>
    [dockerhub]:<https://hub.docker.com>
 
