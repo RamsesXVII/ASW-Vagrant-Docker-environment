@@ -9,7 +9,7 @@
 4. [Provisioning](#provisioning)
     * [Apache TomEE](#apache-tomee)
       * [Il ruolo della cartella condivisa](#cartella-condivisa)
-      * [Postgres](#postgres)
+    * [Postgres](#postgres)
       * [Setup](#setup)
       * [Creazione di un database](#creazione-di-un-database)
 5. [Installazione](#installazione)
