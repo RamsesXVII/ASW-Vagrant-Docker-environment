@@ -36,12 +36,22 @@ Il progetto è stato realizzato nell'ambito del corso di Architetture dei Sistem
   - la realizzazione di una semplice applicazione
   - la creazione di un ambiente per mandare in esecuzione l'applicazione
   - la possibilità di accedere all'applicazione, in esecuzione su una delle due macchine, dal proprio browser 
- 
+
 Attraverso l'utilizzo di [Vagrant][vagrant] è stato quindi realizzato un ambiente  costituito da due macchine virtuali.  La prima delle due macchine virtuali svolge la funzione di server e su di essa è installato [Apache TomEE][tomee], mentre sulla seconda è installato [Postgres][postgres].
+La prima parte del progetto è disponibile [qui].
+
+La seconda parte del progetto ha invece previsto due obiettivi principali:
+
+ - la migrazione del progetto precedente su Docker
+ - la modifica della semplice applicazione Artisti-Canzoni, rendendola RESTful
+ 
+Attraverso l'utilizzo di [Vagrant][vagrant] è stato quindi definita una macchina virtuale sulla quale è stato installato Docker. Sono quindi stati definiti su essa due container: il container tomee ([Apache TomEE][tomee]), e il container postgres ([Postgres][postgres]).
+
+
 
 ### Applicazione
 
-L'applicazione, seguendo le specifiche, è minimale. Nella realizzazione è stato seguito il pattern model-view-controller e si tratta essenzialmente di un gestore di cantanti e canzoni. Fornisce possibilità di inserimento e visualizzazione di entrambe le entità coinvolte. Il codice dell'applicazione è in Java ed è stato fatto uso di diversi framework e tecnologie:
+L'applicazione, seguendo le specifiche, è minimale. Nella realizzazione è stato adottato lo stile architetturale REST. Si tratta quindi di un'evoluzione  il pattern model-view-controller e si tratta essenzialmente di un gestore di cantanti e canzoni. Fornisce possibilità di inserimento e visualizzazione di entrambe le entità coinvolte. Il codice dell'applicazione è in Java ed è stato fatto uso di diversi framework e tecnologie:
 * [JPA] - Per la gestione della persistenza
 * [JSF] - Per l'interfaccia utente lato server
 * [JSP] - Per la programmazione web
@@ -284,7 +294,7 @@ $ sudo netstat -tulpn | grep postgres
    [JSP]: <https://it.wikipedia.org/wiki/JavaServer_Pages>
    [puppet]: <https://puppet.com>
    [hiera]:<https://docs.puppet.com/hiera/3.1/>
-
+   [qui]:<https://github.com/Vzzarr/ASW_VagrantProvision>
 
 
 
