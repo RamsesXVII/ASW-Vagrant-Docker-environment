@@ -38,7 +38,7 @@ echo
 echo "NB: Adesso è presente un artista nel database"
 echo
 echo "----------------------------------------------------------------"
-echo "POST ${REST_SERVICE_URL}/songs"
+echo "POST name=Money&year=1973&idArtista="${ID}" ${REST_SERVICE_URL}/songs"
 echo "----------------------------------------------------------------"
 echo
 ID="$(curl -s -H "Accept:application/json" --get "${REST_SERVICE_URL}/artists" | grep -o -E '[0-9][0-9][0-9]|[0-9]' | head -1)"
